@@ -8,12 +8,12 @@ $phone = $_POST['phone'];
 $encoded_string = $_POST["encoded_string"];
 $decoded_string = base64_decode($encoded_string);
 
-$sqlinsert = "INSERT INTO User(name,email,password,phone,verify) VALUES ('$name','$email','$password','$phone','0')";
+$sqlinsert = "INSERT INTO User(name,email,password,phone,verify,credit,rating) VALUES ('$name','$email','$password','$phone','0','100')";
 if ($conn->query($sqlinsert) === TRUE) {
     $path = '../profile/'.$email.'.jpg';
     file_put_contents($path, $decoded_string);
     sendEmail($email);
-    echo "Register Successful";
+    echo "registered";
 } else {
     echo "Email Registered! Please try again";
 }
